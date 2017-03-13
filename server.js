@@ -1,24 +1,15 @@
 var http = require('http');
-var requestIp = require('request-ip');
-var useragent = require('useragent');
+var parseIpAddress = require('./parsers/ipAddress');
+var parseLanguage = require('./parsers/language');
+var parseUserAgent = require('./parsers/userAgent');
 
 var server = http.createServer(function(req, res) {
   var headers = req.headers;
+  var data = {};
 
-  Object.keys(headers).forEach(header => console.log(header, headers[header]));
-
-  console.log(req.headers['x-forwarded-for'], 'asaersa');
-
-  var clientIp = requestIp.getClientIp(req);
-
-  var agent = useragent.parse(req.headers['user-agent']);
-  console.log(clientIp, 'client ip', agent.os.toString());
-
-  var data = {
-    "ipaddress": null,
-    "language": null,
-    "software": null
-  };
+  data.ipAddress = parseIpAddress(req);
+  data.language = parseLanguage(headers['accept-language']);
+  data.operatingSystem = parseUserAgent(headers['user-agent']);
 
   res.setHeader('Content-Type', 'application/json');
 
