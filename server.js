@@ -13,6 +13,13 @@ var server = http.createServer(function(req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
+  if (data.ipAddress && data.language && data.operatingSystem) {
+    res.statusCode = 200;
+  } else {
+    res.statusCode = 400;
+    res.statusMessage = 'Could not parse one or more header.';
+  }
+
   res.end(JSON.stringify(data, null, 3));
 });
 
