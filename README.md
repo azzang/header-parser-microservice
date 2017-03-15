@@ -1,9 +1,10 @@
 # Request Header Parser Microservice
 ## Functionality:
-parses request headers, returns IP address, language and operating system. relies on the following parsing packages:
-* [request-ip]
-* [accept-language-parser]
-* [useragent]
+* parses request headers; returns IP address, language and operating system.
+* relies on the following packages:
+    * [request-ip]
+    * [accept-language-parser]
+    * [useragent]
 
 ## Endpoint
 ``https://guarded-fjord-46721.herokuapp.com/``
