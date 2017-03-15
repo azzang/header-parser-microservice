@@ -6,7 +6,7 @@ parses request headers, returns IP address, language and operating system. relie
 * [useragent]
 
 ## Endpoint
-``https://timestamp-ms.herokuapp.com/December%2015,%202015``
+``https://guarded-fjord-46721.herokuapp.com/``
 
 ## Response Example
 {"ipAddress": "99.162.152.179", "language": "en-US", "operatingSystem":"Linux"}
