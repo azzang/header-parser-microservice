@@ -1,11 +1,11 @@
-var http = require('http');
-var parseIpAddress = require('./parsers/ipAddress');
-var parseLanguage = require('./parsers/language');
-var parseUserAgent = require('./parsers/userAgent');
+const http = require('http');
+const parseIpAddress = require('./parsers/ipAddress');
+const parseLanguage = require('./parsers/language');
+const parseUserAgent = require('./parsers/userAgent');
 
-var server = http.createServer(function(req, res) {
-  var headers = req.headers;
-  var data = {};
+const server = http.createServer((req, res) => {
+  const headers = req.headers;
+  const data = {};
 
   data.ipAddress = parseIpAddress(req);
   data.language = parseLanguage(headers['accept-language']);
@@ -24,5 +24,3 @@ var server = http.createServer(function(req, res) {
 });
 
 server.listen(process.env.PORT || 5000);
-
-module.exports = server;
